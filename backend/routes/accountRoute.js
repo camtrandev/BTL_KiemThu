@@ -48,4 +48,22 @@ router.put('/users/:id', async (req, res) => {
         res.status(500).json({ message: 'Failed to update user', error });
     }
 });
+
+//admin login
+router.post("/login", (req, res) => {
+  const { uname, pwd } = req.body;
+
+  if (uname === "admin@gmail.com" && pwd === "admin") {
+    return res.json({
+      success: true,
+      token: "admin-auth-token"
+    });
+  }
+
+  return res.status(401).json({
+    success: false,
+    message: "Invalid admin credentials"
+  });
+});
+
 export default router;
