@@ -4,18 +4,18 @@ import { assets } from '../../assets/assets';
 import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { StoreContext } from '../../context/StoreContext';
-import HelpTab from '../HelpTab/HelpTag'; 
+import HelpTab from '../HelpTab/HelpTag';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n.js';
 // eslint-disable-next-line react/prop-types
-const Navbar = ({ setShowLogin,toggleTheme, isDarkMode }) => {
+const Navbar = ({ setShowLogin, toggleTheme, isDarkMode }) => {
   const { t } = useTranslation();
   console.log(i18n.language);
   const [activeMenu, setActiveMenu] = useState('home');
   const [searchQuery, setSearchQuery] = useState('');
   const [showSearch, setShowSearch] = useState(false);
-  const [showHelpTab, setShowHelpTab] = useState(false); 
+  const [showHelpTab, setShowHelpTab] = useState(false);
   const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
   const navigate = useNavigate();
 
@@ -39,15 +39,24 @@ const Navbar = ({ setShowLogin,toggleTheme, isDarkMode }) => {
 
   return (
     <div className='navbar'>
-      
+
       <Link to='/'><img src={assets.logo} alt="Logo" className='logo' /></Link>
-      <button onClick={toggleTheme} className="theme-toggle">
-        {isDarkMode ? <FaSun size={24} /> : <FaMoon size={24} />} 
-      </button>
-          <div className='bu1'>
-      <button className='bu2' onClick={() => i18n.changeLanguage('vi')}>Vi</button>
-      <button className='bu2' onClick={() => i18n.changeLanguage('en')}>En</button>
-          </div>
+
+      <div className='bu1'>
+        <button
+          className={`bu2 ${i18n.language === 'vi' ? 'active-lang' : ''}`}
+          onClick={() => i18n.changeLanguage('vi')}
+        >
+          Vi
+        </button>
+
+        <button
+          className={`bu2 ${i18n.language === 'en' ? 'active-lang' : ''}`}
+          onClick={() => i18n.changeLanguage('en')}
+        >
+          En
+        </button>
+      </div>
 
       <ul className='navbar-menu'>
         <Link to='/' onClick={() => setActiveMenu('home')} className={activeMenu === 'home' ? 'active' : ''}>{t('Home')}</Link>
@@ -56,27 +65,27 @@ const Navbar = ({ setShowLogin,toggleTheme, isDarkMode }) => {
         <a href='/#footer' onClick={() => setActiveMenu('contact-us')} className={activeMenu === 'contact-us' ? 'active' : ''}>{t('Contact Us')}</a>
       </ul>
       <div className='navbar-right'>
-        {showSearch && (
+        <div className="search-box">
           <input
-            type='text'
+            type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder='Search products...'
-            className='navbar-search-input'
+            placeholder="Search products..."
           />
-        )}
-        <img src={assets.search_icon} alt="Search" onClick={() => setShowSearch(!showSearch)} />
+
+          <img src={assets.search_icon} alt="Search" />
+        </div>
         <div className='navbar-search-icon'>
           <Link to='/cart'>
             <img src={assets.basket_icon} alt="Cart" />
           </Link>
           {getTotalCartAmount() > 0 && <div className="dot"></div>}
         </div>
-        <img 
-          src={assets.icon_help} 
-           
-          className='help-icon' 
+        <img
+          src={assets.icon_help}
+
+          className='help-icon'
           onClick={() => setShowHelpTab(!showHelpTab)} // Toggle HelpTab visibility
         />
         {!token ? (
