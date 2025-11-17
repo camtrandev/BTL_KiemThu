@@ -1,15 +1,13 @@
-/* ========== LAYOUT CHUNG ========== */
 
 .list {
     width: 100%;
-    padding: 0 40px 20px; /* giảm padding để kéo nội dung lên */
+    padding: 0 40px 20px; 
     box-sizing: border-box;
 }
 
-/* CHỈNH CHỖ NÀY ĐỂ FORM + TITLE LÊN/XUỐNG */
 .list-wrapper {
     max-width: 900px;
-    margin: -40px auto 0; /* KÉO CONTENT LÊN 40px - muốn lên nữa: -50, -60... */
+    margin: -40px auto 0;
 }
 
 .page-title {
@@ -31,7 +29,7 @@
     box-shadow: 0 6px 18px rgba(0,0,0,0.04);
     display: flex;
     flex-direction: column;
-    gap: 12px; /* GIẢM KHOẢNG CÁCH GIỮA CÁC INPUT */
+    gap: 12px; 
     margin-top: 8px;
 }
 
@@ -52,7 +50,6 @@
         color: #666;
     }
 
-    /* INPUT GỌN HƠN ĐỂ GIẢM CHIỀU CAO FORM */
     .edit-form-row input,
     .edit-form-row textarea,
     .edit-form-row select {
@@ -64,7 +61,7 @@
     }
 
     .edit-form-row textarea {
-        min-height: 60px; /* giảm chiều cao description */
+        min-height: 60px;
         resize: vertical;
     }
 
@@ -79,7 +76,7 @@
 .btn-save,
 .btn-cancel {
     min-width: 110px;
-    padding: 8px 14px; /* giảm chiều cao button */
+    padding: 8px 14px; 
     border-radius: 30px;
     border: none;
     font-size: 14px;
