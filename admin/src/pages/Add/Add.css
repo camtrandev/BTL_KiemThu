@@ -1,45 +1,263 @@
-.add{
-    width: 70%;
-    margin-left: max(5vw,15px);
-    margin-top: 50px;
-    color: #6d6d6d;
-    font: 16px;
-}
-.add form{
-    gap: 20px;
+/* Nền + căn giữa form */
+.add {
+    width: 100%;
+    min-height: 100vh;
+    padding: 40px 16px;
+    box-sizing: border-box;
 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    background: radial-gradient(circle at top left, #fce7f3 0, #eff6ff 35%, #f9fafb 100%);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #0f172a;
 }
-.flex-col{
+
+/* Form chính */
+.add form {
+    width: 100%;
+    max-width: 960px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 24px 24px 20px;
+    box-sizing: border-box;
+
+    box-shadow: 0 22px 60px rgba(15, 23, 42, 0.10);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+
     display: flex;
     flex-direction: column;
+    gap: 18px;
+}
+
+/* Flex column dùng trong component Add để tránh ảnh hưởng global */
+.add .flex-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Tiêu đề nhỏ trên mỗi trường */
+.add p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+}
+
+/* ==== Upload ảnh ==== */
+
+.add-img-upload {
+    align-items: flex-start;
     gap: 10px;
 }
-.add-img-upload img{
-    width: 120px;
 
-}
-.add-product-name , .add-product-description{
-    width: max(40%,280px);
-
-}
-.add-product-name input, .add-product-description textarea{
-    padding: 10px;
-}
-.add-category-price{
+.add-img-upload label {
+    width: 230px;
+    height: 230px;
+    border-radius: 18px;
+    border: 2px dashed #d1d5db;
+    background: #f9fafb;
     display: flex;
-    gap: 30px;
-    
-}
-.add-category-price select, .add-category-price input{
-
-    max-width: 120px;
-    padding: 10px;
-}
-.add-btn{
-    max-width: 120px;
-    border: none;
-    background-color: rgb(212, 22, 22);
-    padding: 10px;
-    color: white;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.add-img-upload label:hover {
+    border-color: #6366f1;
+    background: #eef2ff;
+    box-shadow: 0 10px 24px rgba(99, 102, 241, 0.18);
+    transform: translateY(-1px);
+}
+
+.add-img-upload img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Text gợi ý trong khung upload (áp dụng khi hình nền là icon upload) */
+.add-img-upload label::after {
+    content: "Click để chọn ảnh sản phẩm";
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.88);
+    font-size: 11px;
+    font-weight: 500;
+    color: #4b5563;
+    text-align: center;
+    pointer-events: none;
+}
+
+/* ==== Input & Textarea ==== */
+
+.add-product-name input,
+.add-product-description textarea,
+.add-category-price select,
+.add-category-price input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    border-radius: 11px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    outline: none;
+    background-color: #f9fafb;
+    transition: all 0.15s ease;
+    color: #111827;
+}
+
+.add-product-description textarea {
+    resize: vertical;
+    min-height: 90px;
+    max-height: 240px;
+    line-height: 1.5;
+}
+
+/* Placeholder nhẹ nhàng */
+.add input::placeholder,
+.add textarea::placeholder {
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+/* Focus state */
+.add-product-name input:focus,
+.add-product-description textarea:focus,
+.add-category-price select:focus,
+.add-category-price input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.18);
+    background-color: #ffffff;
+}
+
+/* ==== Category & Price group ==== */
+
+.add-category-price {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.add-category,
+.add-price {
+    flex: 1;
+    min-width: 180px;
+}
+
+/* Select */
+.add-category-price select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, #9ca3af 50%),
+        linear-gradient(135deg, #9ca3af 50%, transparent 50%);
+    background-position: calc(100% - 14px) 50%, calc(100% - 9px) 50%;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+}
+
+/* ==== Nút Submit ==== */
+
+.add-btn {
+    align-self: flex-end;
+    margin-top: 4px;
+
+    min-width: 170px;
+    padding: 11px 20px;
+    border-radius: 999px;
+    border: none;
+    outline: none;
+
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+
+    box-shadow: 0 14px 30px rgba(185, 28, 28, 0.45);
+    transition: all 0.18s ease;
+}
+
+.add-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 18px 38px rgba(185, 28, 28, 0.55);
+    filter: brightness(1.03);
+}
+
+.add-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 10px 22px rgba(185, 28, 28, 0.40);
+}
+
+/* Disabled state (phòng khi sau này bạn thêm disabled) */
+.add-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* ==== Responsive ==== */
+
+@media (max-width: 768px) {
+    .add {
+        padding: 26px 12px;
+        align-items: stretch;
+    }
+
+    .add form {
+        padding: 20px 16px 16px;
+        border-radius: 16px;
+        box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+    }
+
+    .add-img-upload label {
+        width: 200px;
+        height: 200px;
+    }
+
+    .add-btn {
+        width: 100%;
+        align-self: stretch;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .add {
+        padding: 20px 10px;
+    }
+
+    .add form {
+        padding: 16px 12px 14px;
+    }
+
+    .add-img-upload label {
+        width: 180px;
+        height: 180px;
+    }
+
+    .add-product-name input,
+    .add-product-description textarea,
+    .add-category-price select,
+    .add-category-price input {
+        font-size: 13px;
+        padding: 9px 10px;
+    }
 }
