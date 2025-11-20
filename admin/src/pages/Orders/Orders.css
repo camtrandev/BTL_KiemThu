@@ -1,50 +1,63 @@
-.order-item{
+.order-item {
     display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
-    align-items: start;
-    gap: 30px;
+    grid-template-columns: 0.6fr 2fr 1fr 1fr 1fr;
+    gap: 25px;
+    padding: 18px;
+    margin: 25px 0;
     border: 1px solid tomato;
-    padding: 20px;
-    margin: 30px 0px;
+    border-radius: 10px;
     font-size: 14px;
+    background: #fffdfc;
     color: #505050;
+    align-items: center;
 }
 
-.order-item-fur, .order-item-name{
-    font-weight: 600;
-
+/* Ảnh sản phẩm */
+.order-item img {
+    width: 55px;
+    border-radius: 6px;
 }
 
-.order-item-name{
-    margin-top: 30px;
+/* Tên sản phẩm */
+.order-item-name {
+    font-weight: 700;
     margin-bottom: 5px;
 }
-.order-item-address{
-    margin-bottom:10px;
+
+/* Address */
+.order-item-address {
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 13px;
 }
-.order-item select{
-    background-color: #efe6e4;
-    border: 1px solid  rgb(244, 63, 31);
-    width: max(10vw,120px);
+
+/* Select Box (Trạng thái đơn hàng) */
+.order-item select {
+    background-color: #fff0ed;
+    border: 1px solid tomato;
     padding: 10px;
+    border-radius: 6px;
+    width: max(12vw, 140px);
     outline: none;
-
+    cursor: pointer;
+    font-weight: 600;
 }
 
-@media (max-width:1000px) {
-    .order-item{
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+    .order-item {
+        grid-template-columns: 0.7fr 2fr 1fr;
+        padding: 15px 10px;
         font-size: 12px;
-        grid-template-columns: 0.5fr 2fr 1fr;
-        padding: 15px 8px;
     }
-    .order-item select{
-        padding: 5px;
-        font-size: 12px;
 
-    }
-    .order-item img{
+    .order-item img {
         width: 40px;
-        
     }
-    
+
+    .order-item select {
+        padding: 6px;
+        font-size: 12px;
+        width: 100%;
+    }
 }
